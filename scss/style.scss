@@ -1,0 +1,137 @@
+// ==============================
+// Variables
+// ==============================
+$color-text: #333;
+$color-subtext: #666;
+$color-primary: #3478db;
+$color-primary-hover: #245eaf;
+$color-border: #ccc;
+$color-background: #f5f7fa;
+$color-required: #e85b5b;
+$color-white: #fff;
+
+// ==============================
+// Base
+// ==============================
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 20px;
+  font-family: sans-serif;
+  color: $color-text;
+  background-color: $color-background;
+}
+
+// ==============================
+// Contact
+// ==============================
+.contact {
+  max-width: 600px;
+  margin-inline: auto;
+  padding: 40px;
+  background-color: $color-white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  &__title {
+    margin: 0 0 12px;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  &__description {
+    margin-bottom: 32px;
+    color: $color-subtext;
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  &__required {
+    margin-left: 6px;
+    padding: 3px 6px;
+    color: $color-white;
+    background-color: $color-required;
+    border-radius: 4px;
+    font-size: 11px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+    background-color: $color-white;
+    font: inherit;
+    font-size: 14px;
+
+    &:focus {
+      outline: 2px solid #8ab9f5;
+      border-color: $color-primary;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: $color-primary;
+    color: $color-white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-primary-hover;
+    }
+  }
+  &__error {
+    margin: 0;
+    color: #e85b5b;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+// ==============================
+// Responsive
+// ==============================
+@media (max-width: 600px) {
+  body {
+    padding: 24px 16px;
+  }
+
+  .contact {
+    padding: 28px 20px;
+
+    &__title {
+      font-size: 24px;
+    }
+  }
+}

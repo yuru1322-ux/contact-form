@@ -7,6 +7,7 @@ contactForm.addEventListener("submit", (event) => {
   const name = document.querySelector("#name").value.trim();
   const kana = document.querySelector("#kana").value.trim();
   const phone = document.querySelector("#phone").value.trim();
+  const mail = document.querySelector("#mail").value.trim();
   const address = document.querySelector("#address").value.trim();
   const message = document.querySelector("#message").value.trim();
 
@@ -53,6 +54,21 @@ contactForm.addEventListener("submit", (event) => {
     }
   }
 
+  // メールアドレスチェック
+  if (!mail) {
+    document.querySelector("#mail-error").textContent =
+      "メールアドレスを入力してください。";
+    isValid = false;
+  } else if (!/^[\x21-\x7E]+$/.test(mail)) {
+    document.querySelector("#mail-error").textContent =
+      "半角英数字・記号で入力してください。";
+    isValid = false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+    document.querySelector("#mail-error").textContent =
+      "メールアドレスの形式を確認してください。";
+    isValid = false;
+  }
+
   // 住所チェック
   if (!address) {
     document.querySelector("#address-error").textContent =
@@ -71,4 +87,12 @@ contactForm.addEventListener("submit", (event) => {
   if (!isValid) {
     return;
   }
+  console.log("お名前：", name);
+  console.log("ふりがな：", kana);
+  console.log("電話番号：", phone);
+  console.log("住所：", address);
+  console.log("お問い合わせ種別：", document.querySelector("#category").value);
+  console.log("お問い合わせ内容：", message);
+
+  alert("入力チェックに成功しました！");
 });

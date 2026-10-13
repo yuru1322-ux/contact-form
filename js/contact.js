@@ -87,12 +87,26 @@ contactForm.addEventListener("submit", (event) => {
   if (!isValid) {
     return;
   }
-  console.log("お名前：", name);
-  console.log("ふりがな：", kana);
-  console.log("電話番号：", phone);
-  console.log("住所：", address);
-  console.log("お問い合わせ種別：", document.querySelector("#category").value);
-  console.log("お問い合わせ内容：", message);
+  // PHPに送信するデータをまとめる
+  const formData = {
+    name: name,
+    kana: kana,
+    mail: mail,
+    phone: phone,
+    address: address,
+    category: document.querySelector("#category").value,
+    message: message,
+  };
 
-  alert("入力チェックに成功しました！");
+  // AxiosでPHPに送信
+  axios
+    .post("php/send.php", formData)
+    .then((response) => {
+      console.log("PHPからの返事：", response.data);
+      alert("お問い合わせ情報を送信できました！");
+    })
+    .catch((error) => {
+      console.error("送信エラー：", error);
+      alert("送信に失敗しました。もう一度お試しください。");
+    });
 });
